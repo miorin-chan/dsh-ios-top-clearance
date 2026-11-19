@@ -31,12 +31,13 @@ window.__ModuleLoader__.load({
   factory() {
     /**
      * Height the system effect claims inside the viewport. On an iPhone 16 Pro
-     * the status bar ends at about 62px and the blur at about 95px, so 24px of
-     * inset puts the title line (frame y 34–64, glyphs 39–55) and the leading
-     * seat (y 35–63) below the band. The band is a soft falloff; raising this
-     * value moves the whole frame further down.
+     * the status bar ends at about 62px and the blur at about 95px. 16px of
+     * inset starts the title line at frame y 26 (ink from about y 35), so the
+     * title clears the band and the frame gives back 8px compared with 24px;
+     * the leading seat's top edge (y 27) stays at the band's soft edge. Raising
+     * this value moves the whole frame further down and clears more of it.
      */
-    const BAND = 24
+    const BAND = 16
 
     /** iOS Home Screen apps are the only WebKit surface that composites the effect. */
     const isHomeScreenApp = (nav) => nav.standalone === true
