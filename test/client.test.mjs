@@ -48,13 +48,14 @@ function load({ standalone }) {
   return { styles, cleanups, registration: window.registration }
 }
 
-test('iOS Home Screen app drops the header out of the blur band', () => {
+test('iOS Home Screen app insets the frame root out of the blur band', () => {
   const { styles, cleanups, registration } = load({ standalone: true })
   assert.equal(registration.id, 'dsh-ios-top-clearance')
   assert.equal(styles.length, 1)
   const css = styles[0].textContent
-  assert.match(css, /header\[data-window-drag\]/)
-  assert.match(css, /margin-top: 24px/)
+  assert.match(css, /#root\s*\{/)
+  assert.match(css, /padding-top: 24px/)
+  assert.match(css, /box-sizing: border-box/)
   assert.match(css, /max-width: 767px/)
   assert.equal(cleanups.length, 1)
 
@@ -62,13 +63,13 @@ test('iOS Home Screen app drops the header out of the blur band', () => {
   assert.equal(styles.length, 0, 'unloading removes the style')
 })
 
-test('browser tab leaves the header alone', () => {
+test('browser tab leaves the frame alone', () => {
   const { styles, cleanups } = load({ standalone: false })
   assert.equal(styles.length, 0)
   assert.equal(cleanups.length, 0)
 })
 
-test('missing standalone flag leaves the header alone', () => {
+test('missing standalone flag leaves the frame alone', () => {
   const { styles } = load({ standalone: undefined })
   assert.equal(styles.length, 0)
 })
