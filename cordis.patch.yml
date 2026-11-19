@@ -1,0 +1,6 @@
+# Activates the bundle. The Host half is inert; the Client half ships through
+# package.json `dsh.client` and drops the conversation header out of the iOS
+# standalone scroll-edge blur band.
+- insert:
+    - id: dsh-ios-top-clearance
+      name: 'dsh-ios-top-clearance'

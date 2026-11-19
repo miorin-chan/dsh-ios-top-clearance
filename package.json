@@ -1,0 +1,37 @@
+{
+  "name": "dsh-ios-top-clearance",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Keeps the phone Web UI header out of the iOS Home Screen app's scroll-edge blur band.",
+  "type": "module",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "mobile",
+    "ios"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "engines": {
+    "dsh": ">=0.2.2-rc.3"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  }
+}
