@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Margem superior no iOS",
+    "description": "Move o cabeçalho do DSH para baixo da faixa desfocada no topo do app da tela de início do iOS quando a janela tem largura de celular."
+  }
+}

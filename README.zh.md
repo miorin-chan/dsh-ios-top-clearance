@@ -1,5 +1,7 @@
 # dsh-ios-top-clearance
 
+[English](README.md) · [项目文档](docs/README.md)
+
 把 DSH 手机版顶部抬出 iOS 主屏幕应用的系统模糊带。
 
 ## 问题

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "iOS top clearance",
+    "description": "Moves the DSH header below the blurred top edge in the iOS Home Screen app at phone widths."
+  }
+}
