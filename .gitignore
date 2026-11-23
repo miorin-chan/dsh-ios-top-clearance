@@ -3,3 +3,7 @@ node_modules/
 *.tgz
 /index.js
 /client.js
+
+# Compiled tooling
+/scripts/build.mjs
+/scripts/sync-types.mjs

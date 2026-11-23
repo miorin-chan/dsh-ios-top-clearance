@@ -8,7 +8,7 @@
 - 本 bundle 独立安装和启停。
   [浏览器源码](src/client/index.ts) 的文件头记录滚动模糊带、16px 顶部留白以及 DSH frame 的定位关系。
   [Host 源码](src/host/index.ts) 是供 [bundle patch](cordis.patch.yml) 加载的空 Host 模块。
-- [构建脚本](scripts/build.mjs) 生成 `client.js` 和 `index.js`。
+- [构建脚本](scripts/build.mts) 生成 `client.js` 和 `index.js`。
   Git 忽略这两个文件，npm 打包时包含它们。
   DSH 类型依赖用 `import type` 引入。
 - `navigator.standalone === true` 限定 iOS 主屏幕应用。
@@ -44,7 +44,7 @@
   只展示用户当下需要知道或操作的内容，细节按需展开。
 - 新检出后在项目根运行 `npm ci`，安装锁定的开发依赖并生成运行文件。
   改动源码后用 `npm run build` 更新产物，用 `npm test` 重新构建并测试。
-  [客户端测试](test/client.test.mjs) 用假页面验证样式注册、应用范围和卸载清理。
+  [客户端测试](test/client.test.mts) 用假页面验证样式注册、应用范围和卸载清理。
 - 在 DSH shell 运行 `npm run check`，依次核对产物、运行测试、检查类型并核对当前 DSH 的类型包版本。
   升级 DSH 后先执行 `node scripts/sync-types.mjs` 查看新的固定版本。
 - 用 `node --check client.js && node --check index.js` 验证语法，用 `npm pack --dry-run --json` 核对发布文件。
@@ -55,3 +55,6 @@
 - 在项目根运行 `prek install`，之后提交时会自动重排暂存的 Markdown。
 - 在 DSH 沙箱内提交时，用 `PREK_HOME="${TMPDIR:?}/prek-dsh" git commit -m "<commit message>"`，
   让 reflow 钩子照常运行，并把 `prek` 的缓存和日志写到可写的临时目录。
+
+`npm run build:tools` 从 `scripts/` 下的 `.mts` 生成同路径 `.mjs`，Git 跟踪 TypeScript 源码。
+Node.js 22.18 或更新版本直接运行 `.test.mts`。
