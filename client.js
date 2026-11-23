@@ -27,7 +27,7 @@
  */
 
 window.__ModuleLoader__.load({
-  id: 'dsh-ios-top-clearance',
+  id: '@miorin/dsh-ios-top-clearance',
   factory() {
     /**
      * Height the system effect claims inside the viewport. On an iPhone 16 Pro

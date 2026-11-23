@@ -3,4 +3,4 @@
 # standalone scroll-edge blur band.
 - insert:
     - id: dsh-ios-top-clearance
-      name: 'dsh-ios-top-clearance'
+      name: '@miorin/dsh-ios-top-clearance'

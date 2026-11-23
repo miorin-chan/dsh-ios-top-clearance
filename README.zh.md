@@ -35,7 +35,7 @@ dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
 ## 移除
 
 ```sh
-dsh plugin --profile web remove dsh-ios-top-clearance
+dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
 ```
 
 ## 测试

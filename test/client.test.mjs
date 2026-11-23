@@ -50,7 +50,7 @@ function load({ standalone }) {
 
 test('iOS Home Screen app insets the frame root out of the blur band', () => {
   const { styles, cleanups, registration } = load({ standalone: true })
-  assert.equal(registration.id, 'dsh-ios-top-clearance')
+  assert.equal(registration.id, '@miorin/dsh-ios-top-clearance')
   assert.equal(styles.length, 1)
   const css = styles[0].textContent
   assert.match(css, /#root\s*\{/)

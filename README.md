@@ -43,7 +43,7 @@ and 16px is the smallest value that keeps the title clear; 24px was the fully cl
 ## Remove
 
 ```sh
-dsh plugin --profile web remove dsh-ios-top-clearance
+dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
 ```
 
 ## Test
