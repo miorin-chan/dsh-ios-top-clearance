@@ -25,12 +25,15 @@ frame 上方的留白是页面背景，系统模糊过去只剩平色。
 
 ## 安装
 
+在源码检出目录运行 `npm ci` 安装开发依赖并构建插件。
+
 ```sh
 dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
 ```
 
-装完后重新打开主屏幕应用。如果最上面一行还剩一点虚边，把 `client.js` 里的 `BAND` 调大；这条带子是软过渡，
-16px 是让标题正好出带的最小值，24px 对应 62px 状态栏下 95px 的带底。
+装完后重新打开主屏幕应用。
+如果最上面一行还剩一点虚边，在[浏览器源码](src/client/index.ts)中调大 `BAND`，再运行 `npm run build`。
+这条带子是软过渡，16px 是让标题正好出带的最小值，24px 对应 62px 状态栏下 95px 的带底。
 
 ## 移除
 
@@ -40,6 +43,6 @@ dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
 
 ## 测试
 
-```sh
-node --test
-```
+在检出目录运行 `npm install` 或 `pnpm install` 安装构建工具并生成 JavaScript。
+`npm test` 会重新构建并运行单元测试。
+其他命令见[项目验证约定](AGENTS.local.md#文档与验证)。

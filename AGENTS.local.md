@@ -6,8 +6,10 @@
 ## 范围与结构
 
 - 本 bundle 独立安装和启停。
-  [client.js](client.js) 是浏览器模块，文件头记录滚动模糊带、16px 顶部留白以及 DSH frame 的定位关系。
-  [index.js](index.js) 是供 [bundle patch](cordis.patch.yml) 加载的空 Host 模块。
+  [浏览器源码](src/client/index.ts) 的文件头记录滚动模糊带、16px 顶部留白以及 DSH frame 的定位关系。
+  [Host 源码](src/host/index.ts) 是供 [bundle patch](cordis.patch.yml) 加载的空 Host 模块。
+- [构建脚本](scripts/build.mjs) 生成入库的 [client.js](client.js) 和 [index.js](index.js)。
+  DSH 类型依赖用 `import type` 引入。
 - `navigator.standalone === true` 限定 iOS 主屏幕应用。
   宽度限制在 CSS 中处理，以适应视口宽度变化。
   在 `#root` 留出空间，使抽屉开关、标题栏及抽屉整体下移。
@@ -39,8 +41,12 @@
   设计与验证记录用中文，入口见 [文档索引](docs/README.md)。
 - 插件详情页要整体短、每项一眼能懂。
   只展示用户当下需要知道或操作的内容，细节按需展开。
-- 在项目目录运行 `node --test`、`node --check client.js && node --check index.js` 及 `npm pack --dry-run --json`。
+- 在项目目录用 `npm install` 或 `pnpm install` 安装开发依赖并构建。
+  改动源码后用 `npm run build` 更新产物，用 `npm test` 重新构建并测试。
   [客户端测试](test/client.test.mjs) 用假页面验证样式注册、应用范围和卸载清理。
+- 在 DSH shell 运行 `npm run check`，依次核对产物、运行测试、检查类型并核对当前 DSH 的类型包版本。
+  升级 DSH 后先执行 `node scripts/sync-types.mjs` 查看新的固定版本。
+- 用 `node --check client.js && node --check index.js` 验证语法，用 `npm pack --dry-run --json` 核对发布文件。
 - 在工作区运行 `node tools/new-dsh-plugin/cli.mjs --check plugins/dsh-ios-top-clearance`。
   如需设备验证，用临时 profile 在 iOS 主屏幕应用确认标题和抽屉开关的位置，并对照普通浏览器标签页。
 - 用 `docs/scripts/reflow md <path>` 重排修改过的英文 Markdown。

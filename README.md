@@ -30,6 +30,8 @@ Browser tabs, the desktop app and the frame's internal layout are untouched.
 
 ## Install
 
+Run `npm ci` in the source checkout to install the development dependencies and build the plugin.
+
 ```sh
 dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
 ```
@@ -37,8 +39,10 @@ dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
 The package is a bundle, so adding it also inserts it into the profile's bundles.
 Reload the Home Screen app after installing.
 
-If the top row still catches a faint soft edge, raise `BAND` in `client.js` — the band is a soft falloff
-and 16px is the smallest value that keeps the title clear; 24px was the fully clear end below a 62px status bar.
+If the top row still catches a faint soft edge, raise `BAND` in the browser source and run `npm run build`.
+The band has a soft falloff. The smallest value that keeps the title clear is 16px.
+An inset of 24px cleared the band below a 62px status bar.
+[Browser source](src/client/index.ts)
 
 ## Remove
 
@@ -48,6 +52,6 @@ dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
 
 ## Test
 
-```sh
-node --test
-```
+Run `npm install` or `pnpm install` in the checkout to install the build tools and generate the JavaScript.
+Run `npm test` to rebuild and run the unit tests.
+[Project checks](AGENTS.local.md#文档与验证)

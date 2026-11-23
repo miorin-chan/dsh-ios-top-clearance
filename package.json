@@ -27,7 +27,10 @@
     "README.zh.md",
     "AGENTS.md",
     "AGENTS.local.md",
-    "docs/README.md"
+    "docs/README.md",
+    "src",
+    "scripts",
+    "tsconfig.json"
   ],
   "engines": {
     "dsh": ">=0.2.2-rc.3"
@@ -40,6 +43,20 @@
       "platform": "web",
       "immediately": true
     }
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepare": "npm run build 1>&2",
+    "test": "npm run build && npm run test:unit --",
+    "test:unit": "node --test",
+    "typecheck": "tsc -p tsconfig.json",
+    "check": "node scripts/build.mjs --check && npm run test:unit && npm run typecheck && node scripts/sync-types.mjs --check"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.1.0",
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "typescript": "5.7.3"
   },
   "publishConfig": {
     "access": "public"
