@@ -43,6 +43,5 @@ dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
 
 ## 测试
 
-在检出目录运行 `npm install` 或 `pnpm install` 安装构建工具并生成 JavaScript。
-`npm test` 会重新构建并运行单元测试。
+首次检出后，先在项目目录运行 `npm ci`，再用 `npm test` 重新构建并运行单元测试。
 其他命令见[项目验证约定](AGENTS.local.md#文档与验证)。

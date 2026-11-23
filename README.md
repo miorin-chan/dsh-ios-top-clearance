@@ -52,6 +52,5 @@ dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
 
 ## Test
 
-Run `npm install` or `pnpm install` in the checkout to install the build tools and generate the JavaScript.
-Run `npm test` to rebuild and run the unit tests.
+Run `npm ci` in a fresh checkout before running `npm test`, which rebuilds the plugin and runs the unit tests.
 [Project checks](AGENTS.local.md#文档与验证)

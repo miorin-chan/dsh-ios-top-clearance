@@ -8,7 +8,8 @@
 - 本 bundle 独立安装和启停。
   [浏览器源码](src/client/index.ts) 的文件头记录滚动模糊带、16px 顶部留白以及 DSH frame 的定位关系。
   [Host 源码](src/host/index.ts) 是供 [bundle patch](cordis.patch.yml) 加载的空 Host 模块。
-- [构建脚本](scripts/build.mjs) 生成入库的 [client.js](client.js) 和 [index.js](index.js)。
+- [构建脚本](scripts/build.mjs) 生成 `client.js` 和 `index.js`。
+  Git 忽略这两个文件，npm 打包时包含它们。
   DSH 类型依赖用 `import type` 引入。
 - `navigator.standalone === true` 限定 iOS 主屏幕应用。
   宽度限制在 CSS 中处理，以适应视口宽度变化。
@@ -41,7 +42,7 @@
   设计与验证记录用中文，入口见 [文档索引](docs/README.md)。
 - 插件详情页要整体短、每项一眼能懂。
   只展示用户当下需要知道或操作的内容，细节按需展开。
-- 在项目目录用 `npm install` 或 `pnpm install` 安装开发依赖并构建。
+- 新检出后在项目根运行 `npm ci`，安装锁定的开发依赖并生成运行文件。
   改动源码后用 `npm run build` 更新产物，用 `npm test` 重新构建并测试。
   [客户端测试](test/client.test.mjs) 用假页面验证样式注册、应用范围和卸载清理。
 - 在 DSH shell 运行 `npm run check`，依次核对产物、运行测试、检查类型并核对当前 DSH 的类型包版本。
