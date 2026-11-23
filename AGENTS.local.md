@@ -48,7 +48,7 @@
 - 在 DSH shell 运行 `npm run check`，依次核对产物、运行测试、检查类型并核对当前 DSH 的类型包版本。
   升级 DSH 后先执行 `node scripts/sync-types.mjs` 查看新的固定版本。
 - 用 `node --check client.js && node --check index.js` 验证语法，用 `npm pack --dry-run --json` 核对发布文件。
-- 在工作区运行 `node tools/new-dsh-plugin/cli.mjs --check plugins/dsh-ios-top-clearance`。
+- 在工作区运行 `node tools/new-dsh-plugin/cli.mts --check plugins/dsh-ios-top-clearance`。
   如需设备验证，用临时 profile 在 iOS 主屏幕应用确认标题和抽屉开关的位置，并对照普通浏览器标签页。
 - 用 `docs/scripts/reflow md <path>` 重排修改过的英文 Markdown。
   命令需要 Python 3.11 或更新版本。
