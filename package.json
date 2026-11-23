@@ -1,7 +1,6 @@
 {
   "name": "@miorin/dsh-ios-top-clearance",
   "version": "0.1.0",
-  "private": true,
   "license": "MIT",
   "description": "Keeps the phone Web UI header out of the iOS Home Screen app's scroll-edge blur band.",
   "type": "module",
@@ -41,5 +40,8 @@
       "platform": "web",
       "immediately": true
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
