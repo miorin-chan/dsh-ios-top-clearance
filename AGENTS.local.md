@@ -37,6 +37,8 @@
 
 - [README.md](README.md) 是英文用户文档，[README.zh.md](README.zh.md) 是中文版。
   设计与验证记录用中文，入口见 [文档索引](docs/README.md)。
+- 插件详情页要整体短、每项一眼能懂。
+  只展示用户当下需要知道或操作的内容，细节按需展开。
 - 在项目目录运行 `node --test`、`node --check client.js && node --check index.js` 及 `npm pack --dry-run --json`。
   [客户端测试](test/client.test.mjs) 用假页面验证样式注册、应用范围和卸载清理。
 - 在工作区运行 `node tools/new-dsh-plugin/cli.mjs --check plugins/dsh-ios-top-clearance`。
