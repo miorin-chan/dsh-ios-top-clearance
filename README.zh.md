@@ -23,10 +23,8 @@ dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
 以下截图来自 iPhone 17 Pro 模拟器（iOS 26.4），同一会话开启插件后标题与抽屉开关整体下移 16 CSS 像素（验证位移，
 不代表真机系统模糊效果）。
 
-| 浅色 | 深色 |
-| --- | --- |
-| ![开启顶部留白后的浅色会话](docs/assets/screenshots/main-light.png) | ![开启顶部留白后的深色会话](docs/assets/screenshots/main-dark.png) |
-
-[查看关闭插件时的浅色对照](docs/assets/screenshots/off-light.png)
+| 关闭插件（浅色） | 开启插件（浅色） | 开启插件（深色） |
+| --- | --- | --- |
+| ![关闭顶部留白时的浅色会话](docs/assets/screenshots/off-light.png) | ![开启顶部留白后的浅色会话](docs/assets/screenshots/main-light.png) | ![开启顶部留白后的深色会话](docs/assets/screenshots/main-dark.png) |
 
 [项目文档](docs/README.md)

@@ -25,10 +25,8 @@ To uninstall: `dsh plugin --profile web remove @miorin/dsh-ios-top-clearance`.
 Captured on an iPhone 17 Pro simulator running iOS 26.4 (Chinese UI), showing a 16 CSS px downward shift compared
 to the disabled state.
 
-| Light | Dark |
-| --- | --- |
-| ![Light theme with top clearance enabled](docs/assets/screenshots/main-light.png) | ![Dark theme with top clearance enabled](docs/assets/screenshots/main-dark.png) |
-
-[Light theme with the plugin turned off](docs/assets/screenshots/off-light.png)
+| Plugin off (light) | Plugin on (light) | Plugin on (dark) |
+| --- | --- | --- |
+| ![Light theme with top clearance turned off](docs/assets/screenshots/off-light.png) | ![Light theme with top clearance enabled](docs/assets/screenshots/main-light.png) | ![Dark theme with top clearance enabled](docs/assets/screenshots/main-dark.png) |
 
 [Project documentation](docs/README.md)
