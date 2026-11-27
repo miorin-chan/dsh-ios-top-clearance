@@ -1,33 +1,27 @@
 # dsh-ios-top-clearance
 
-[English](README.md) · [项目文档](docs/README.md)
+[English](README.md)
 
-把 DSH 手机版顶部抬出 iOS 主屏幕应用的系统模糊带。
+把 DSH 手机版顶部标题栏移出 iOS 主屏幕应用的系统模糊带。
 
-## 问题
+在 iOS 26 及以上版本中，仅当以主屏幕独立应用运行（`navigator.standalone === true`）且视口宽度不超过 767 px 时，
+插件将 `#root` 向下让出 16 px，使标题行与抽屉开关避开顶部的系统滚动边缘模糊带。
+浏览器标签页、桌面端与 frame 内部布局均不受影响。
 
-iOS 26 及以后，主屏幕 Web 应用会得到系统级的滚动边缘效果：视口最上面约 33 CSS px 由 WebKit 在上层模糊、
-压暗，页面自己渲染的那块是清晰的。
-DSH 手机版的会话标题栏正好从视口顶部开始，标题行落在这条带子里，看起来发灰、发虚，而下方的正文仍然锐利。
+需要 DeepSeek Harness `0.2.2-rc.3` 或更新版本。
+可在 **移动端模块化改良计划** 中直接开启 **iOS 顶部留白**，或在本地源码目录构建后安装到 Web profile：
 
-这不是页面样式造成的，也没有 CSS 开关能关掉它：原生应用用 `scrollView.topEdgeEffect.isHidden` 隐藏，网页够不到。
-页面侧唯一的办法是把内容挪出这条带子。
+```sh
+pnpm install
+dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
+```
 
-## 插件做什么
-
-仅在 iOS 独立应用（`navigator.standalone === true`）且宽度不超过 767px 时，
-把 frame 根节点整体让出 16px（比带子的宽度略小，标题行仍在带外，比 24px 省 8px）。
-位移放在 `#root` 而不是会话标题栏上：frame 左上角的 leading seat（抽屉开关）是相对 frame 顶部绝对定位的，
-只挪标题栏会把它留在原地、悬在标题上方；挪根节点则让开关、标题栏、抽屉一起下移。
-frame 上方的留白是页面背景，系统模糊过去只剩平色。
-
-浏览器标签页、桌面端和 frame 内部的布局都不受影响。
+安装后重新打开主屏幕应用即可生效；卸载可运行 `dsh plugin --profile web remove @miorin/dsh-ios-top-clearance`。
 
 ## 模拟器实拍
 
-下图来自 iPhone 17 Pro 模拟器上 iOS 26.4 的主屏幕 Web App。
-在同一会话中开启插件后，标题和抽屉开关都下移了 16 CSS 像素。
-这组对照验证的是布局位移，不是物理 iPhone 上的模糊效果。
+以下截图来自 iPhone 17 Pro 模拟器（iOS 26.4），同一会话开启插件后标题与抽屉开关整体下移 16 CSS 像素（验证位移，
+不代表真机系统模糊效果）。
 
 | 浅色 | 深色 |
 | --- | --- |
@@ -35,25 +29,4 @@ frame 上方的留白是页面背景，系统模糊过去只剩平色。
 
 [查看关闭插件时的浅色对照](docs/assets/screenshots/off-light.png)
 
-## 安装
-
-在源码检出目录运行 `npm ci` 安装开发依赖并构建插件。
-
-```sh
-dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
-```
-
-装完后重新打开主屏幕应用。
-如果最上面一行还剩一点虚边，在[浏览器源码](src/client/index.ts)中调大 `BAND`，再运行 `npm run build`。
-这条带子是软过渡，16px 是让标题正好出带的最小值，24px 对应 62px 状态栏下 95px 的带底。
-
-## 移除
-
-```sh
-dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
-```
-
-## 测试
-
-首次检出后，先在项目目录运行 `npm ci`，再用 `npm test` 重新构建并运行单元测试。
-其他命令见[项目验证约定](AGENTS.local.md#文档与验证)。
+[项目文档](docs/README.md)

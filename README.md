@@ -1,38 +1,29 @@
 # dsh-ios-top-clearance
 
-[简体中文](README.zh.md) · [Project documentation](docs/README.md)
+[简体中文](README.zh.md)
 
-Keeps the DSH phone header out of the iOS Home Screen app's top blur band.
+Keeps the DSH phone header below the iOS Home Screen web app's top blur band.
 
-## The problem
+On iOS 26 and later, in the standalone Home Screen app (`navigator.standalone === true`)
+at phone widths (`max-width: 767px`), the plugin insets `#root` by 16 px so the title row
+and drawer opener clear the system scroll-edge blur.
+Browser tabs, Desktop, and internal frame layouts stay untouched.
 
-On iOS 26 and later, a Home Screen web app gets a system scroll-edge effect:
-the first ~33 CSS px of the viewport are blurred and dimmed by WebKit, above the page's own rendering.
-In the DSH Web UI the conversation header starts at the viewport top, so its title row lands inside that band
-and looks smudged — "修复 Reflow 排版并验证回归" reads grey and soft while the transcript below stays sharp.
+Requires DeepSeek Harness `0.2.2-rc.3` or newer.
+Enable **iOS top clearance** in **Mobile Modular Improvement Plan**, or install standalone from a checkout:
 
-The effect is not a page style.
-Native apps hide it with `scrollView.topEdgeEffect.isHidden`; a web page has no CSS or JavaScript switch for it,
-so the only remedy is to keep content out of the band.
+```sh
+pnpm install
+dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
+```
 
-## What this plugin does
-
-In the iOS standalone app only (`navigator.standalone === true`) and only
-at phone widths (`max-width: 767px`), it insets the frame root by 16px.
-That keeps the title line out of the band while giving back 8px against a 24px inset;
-the band's soft edge settles on the leading seat's top.
-The inset sits on `#root` rather than on the conversation header
-because the frame's leading seat (the drawer opener) is absolutely positioned against the frame top:
-insetting the root moves the seat, the header and the drawer together, so no control is stranded above the title.
-The strip above the frame is page background, so the system blur has nothing to smear.
-
-Browser tabs, the desktop app and the frame's internal layout are untouched.
+Reload the Home Screen app after installing.
+To uninstall: `dsh plugin --profile web remove @miorin/dsh-ios-top-clearance`.
 
 ## Simulator screenshots
 
-Captured from the iOS 26.4 Home Screen web app on an iPhone 17 Pro simulator, with the DSH interface in Chinese.
-In the same conversation, enabling the plugin moved the title and drawer opener down by 16 CSS pixels.
-This comparison verifies the layout change, not the blur on a physical iPhone.
+Captured on an iPhone 17 Pro simulator running iOS 26.4 (Chinese UI), showing a 16 CSS px downward shift compared
+to the disabled state.
 
 | Light | Dark |
 | --- | --- |
@@ -40,29 +31,4 @@ This comparison verifies the layout change, not the blur on a physical iPhone.
 
 [Light theme with the plugin turned off](docs/assets/screenshots/off-light.png)
 
-## Install
-
-Run `npm ci` in the source checkout to install the development dependencies and build the plugin.
-
-```sh
-dsh plugin --profile web add link:/path/to/plugins/dsh-ios-top-clearance
-```
-
-The package is a bundle, so adding it also inserts it into the profile's bundles.
-Reload the Home Screen app after installing.
-
-If the top row still catches a faint soft edge, raise `BAND` in the browser source and run `npm run build`.
-The band has a soft falloff. The smallest value that keeps the title clear is 16px.
-An inset of 24px cleared the band below a 62px status bar.
-[Browser source](src/client/index.ts)
-
-## Remove
-
-```sh
-dsh plugin --profile web remove @miorin/dsh-ios-top-clearance
-```
-
-## Test
-
-Run `npm ci` in a fresh checkout before running `npm test`, which rebuilds the plugin and runs the unit tests.
-[Project checks](AGENTS.local.md#文档与验证)
+[Project documentation](docs/README.md)
