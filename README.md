@@ -28,6 +28,18 @@ The strip above the frame is page background, so the system blur has nothing to 
 
 Browser tabs, the desktop app and the frame's internal layout are untouched.
 
+## Simulator screenshots
+
+Captured from the iOS 26.4 Home Screen web app on an iPhone 17 Pro simulator, with the DSH interface in Chinese.
+In the same conversation, enabling the plugin moved the title and drawer opener down by 16 CSS pixels.
+This comparison verifies the layout change, not the blur on a physical iPhone.
+
+| Light | Dark |
+| --- | --- |
+| ![Light theme with top clearance enabled](docs/assets/screenshots/main-light.png) | ![Dark theme with top clearance enabled](docs/assets/screenshots/main-dark.png) |
+
+[Light theme with the plugin turned off](docs/assets/screenshots/off-light.png)
+
 ## Install
 
 Run `npm ci` in the source checkout to install the development dependencies and build the plugin.

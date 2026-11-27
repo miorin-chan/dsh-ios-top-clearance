@@ -23,6 +23,18 @@ frame 上方的留白是页面背景，系统模糊过去只剩平色。
 
 浏览器标签页、桌面端和 frame 内部的布局都不受影响。
 
+## 模拟器实拍
+
+下图来自 iPhone 17 Pro 模拟器上 iOS 26.4 的主屏幕 Web App。
+在同一会话中开启插件后，标题和抽屉开关都下移了 16 CSS 像素。
+这组对照验证的是布局位移，不是物理 iPhone 上的模糊效果。
+
+| 浅色 | 深色 |
+| --- | --- |
+| ![开启顶部留白后的浅色会话](docs/assets/screenshots/main-light.png) | ![开启顶部留白后的深色会话](docs/assets/screenshots/main-dark.png) |
+
+[查看关闭插件时的浅色对照](docs/assets/screenshots/off-light.png)
+
 ## 安装
 
 在源码检出目录运行 `npm ci` 安装开发依赖并构建插件。

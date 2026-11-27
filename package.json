@@ -28,6 +28,8 @@
     "AGENTS.md",
     "AGENTS.local.md",
     "docs/README.md",
+    "docs/DETAIL.zh.md",
+    "docs/assets/screenshots",
     "src",
     "scripts",
     "tsconfig.json",
